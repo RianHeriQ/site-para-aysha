@@ -10,6 +10,7 @@ h1, p{
   text-align: center;
   color: white;
   font-family: Monospace;
+  border: 2px solid black;
 }
 .toolbar {
   background: #333;
