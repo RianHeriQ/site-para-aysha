@@ -21,8 +21,8 @@
         <img class="overlay-image-2" src="imagens/ponta.png" alt="Imagem de Sobreposição 2">
       </div>
       <div class="relogio-grade">
-        <p class="date"> {{ data }} </p>
-        <p class="time" id="clock"> {{ hora }} </p>
+        <p class="date" id="dataReal"></p>
+        <p class="time" id="horaReal"></p>
       </div>
     </div>
     <h1>{{ dia_semana }}</h1>
@@ -56,28 +56,30 @@
     setInterval(executarAnimacao, 1000);
   });
 </script>
+ <script>
+    function atualizarDataHora() {
+      var agora = new Date();
 
+      // Formatando a data
+      var dia = agora.getDate();
+      var mes = agora.getMonth() + 1; 
+      var ano = agora.getFullYear();
+      var dataFormatada = dia + '/' + mes + '/' + ano;
 
+      // Formatando a hora
+      var hora = agora.getHours();
+      var minutos = agora.getMinutes();
+      var segundos = agora.getSeconds();
+      var horaFormatada = hora + ':' + (minutos < 10 ? '0' : '') + minutos + ':' + (segundos < 10 ? '0' : '') + segundos;
+      
+      document.getElementById("dataReal").innerText = "Data: " + dataFormatada;
+      document.getElementById("horaReal").innerText = "Hora: " + horaFormatada;
+    }
+
+    setInterval(atualizarDataHora, 1000);
+    atualizarDataHora(); 
+  </script>
   
-<script>
-  function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
 
-            var timeString = hours + ':' + minutes + ':' + seconds;
-            
-            document.getElementById('clock').textContent = timeString;
-        }
-        
-        setInterval(updateClock, 1000);
-
-        updateClock();
-    </script>
   </body>
 </html>
