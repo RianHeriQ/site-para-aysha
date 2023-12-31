@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <title>minhaaysha.com</title>
+  </head>
+  <body>
+    <div class="toolbar">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      
+    </div>
+    <h1>Contando Dias!</h1>
+    <div class="container">
+      <div class="imagem-container">
+        <img class="base-image" src="{{ url_for("static", filename="imagens/cartao1.png") }}" alt="Imagem Base">
+        <img class="animated-image" src="{{ url_for("static", filename="imagens/seta.png") }}" alt="Imagem com Animação">
+        <img class="overlay-image" src="{{ url_for("static", filename="imagens/cartao2.png") }}" alt="Imagem de Sobreposição">
+        <img class="overlay-image-2" src="{{ url_for("static", filename="imagens/ponta.png") }}" alt="Imagem de Sobreposição 2">
+      </div>
+      <div class="relogio-grade">
+        <p class="date"> {{ data }} </p>
+        <p class="time" id="clock"> {{ hora }} </p>
+      </div>
+    </div>
+    <h1>{{ dia_semana }}</h1>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    function executarAnimacao() {
+      var diaDaSemana = new Date().getDay();
+      
+      if (diaDaSemana == 1) {
+        var deslocamento = 180
+      } else if (diaDaSemana == 2){
+        var deslocamento = 230
+      } else if (diaDaSemana == 3){
+        var deslocamento = 280
+      } else if (diaDaSemana == 4){
+        var deslocamento = 320
+      } else if (diaDaSemana == 5){
+        var deslocamento = 387
+      }
+        
+      $('.animated-image, .overlay-image-2').animate({
+        marginLeft: deslocamento + 'px'
+      }, 1000);
+    }
+
+    executarAnimacao();
+
+    setInterval(executarAnimacao, 1000);
+  });
+</script>
+
+
+  
+<script>
+  function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            
+            document.getElementById('clock').textContent = timeString;
+        }
+        
+        setInterval(updateClock, 1000);
+
+        updateClock();
+    </script>
+  </body>
+</html>
