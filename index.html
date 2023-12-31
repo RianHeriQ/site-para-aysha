@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <link rel="stylesheet" href="estilos.css">
     <title>minhaaysha.com</title>
   </head>
   <body>
@@ -15,10 +15,10 @@
     <h1>Contando Dias!</h1>
     <div class="container">
       <div class="imagem-container">
-        <img class="base-image" src="{{ url_for("static", filename="imagens/cartao1.png") }}" alt="Imagem Base">
-        <img class="animated-image" src="{{ url_for("static", filename="imagens/seta.png") }}" alt="Imagem com Animação">
-        <img class="overlay-image" src="{{ url_for("static", filename="imagens/cartao2.png") }}" alt="Imagem de Sobreposição">
-        <img class="overlay-image-2" src="{{ url_for("static", filename="imagens/ponta.png") }}" alt="Imagem de Sobreposição 2">
+        <img class="base-image" src="imagens/cartao1.png" alt="Imagem Base">
+        <img class="animated-image" src="imagens/seta.png" alt="Imagem com Animação">
+        <img class="overlay-image" src="imagens/cartao2.png" alt="Imagem de Sobreposição">
+        <img class="overlay-image-2" src="imagens/ponta.png" alt="Imagem de Sobreposição 2">
       </div>
       <div class="relogio-grade">
         <p class="date"> {{ data }} </p>
